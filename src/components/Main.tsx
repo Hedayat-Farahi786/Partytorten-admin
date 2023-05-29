@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashboardPage from "../pages";
 import SignInPage from "../pages/authentication/sign-in";
 import SignUpPage from "../pages/authentication/sign-up";
-import EcommerceProductsPage from "../pages/e-commerce/products";
+import EcommerceProductsPage from "../pages/admin/products";
 import UserListPage from "../pages/users/list";
 import { useDispatch } from "react-redux";
 import { addCategories, addProducts, unload } from "../api/features/product";
@@ -45,7 +45,7 @@ const Main: FC = function () {
         <Route path="/authentication/sign-in" element={<SignInPage />} />
         <Route path="/authentication/sign-up" element={<SignUpPage />} />
         <Route
-          path="/e-commerce/products"
+          path="/admin/products"
           element={<EcommerceProductsPage />}
         />
         <Route path="/users/list" element={<UserListPage />} />

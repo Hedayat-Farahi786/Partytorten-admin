@@ -30,15 +30,10 @@ const ExampleSidebar: FC = function () {
   };
 
   return (
-    <>
-      <button
-        className="absolute top-2 left-2 bg-gray-300 px-2 py-1 rounded-md"
-        onClick={handleToggleSidebar}
-      >
-        Toggle Sidebar
-      </button>
+    <div
+      className={`${showSidebar ? "flex" : "hidden"}`}
+    >
       <Sidebar
-        className={`${showSidebar ? "flex" : "hidden"} md:flex`}
         aria-label="Sidebar with multi-level dropdown example"
       >
         <div className="flex h-full flex-col justify-between py-2">
@@ -54,27 +49,30 @@ const ExampleSidebar: FC = function () {
             </form>
             <Sidebar.Items>
               <Sidebar.ItemGroup>
-                <Sidebar.Item
-                  href="/"
-                  icon={HiChartPie}
-                  onClick={handleToggleSidebar}
-                  className={
-                    "/" === currentPage ? "bg-gray-100 dark:bg-gray-700" : ""
-                  }
-                >
-                  Dashboard
-                </Sidebar.Item>
-                <Sidebar.Item
-                  icon={HiShoppingBag}
-                  onClick={handleToggleSidebar}
-                  className={
-                    "/e-commerce/products" === currentPage
-                      ? "bg-gray-100 dark:bg-gray-700"
-                      : ""
-                  }
-                >
-                  <Link to="/e-commerce/products">Products</Link>
-                </Sidebar.Item>
+                <Link to="/">
+                  <Sidebar.Item
+                    icon={HiChartPie}
+                    onClick={handleToggleSidebar}
+                    className={
+                      "/" === currentPage ? "bg-gray-100 dark:bg-gray-700" : ""
+                    }
+                  >
+                    Dashboard
+                  </Sidebar.Item>
+                </Link>
+                <Link to="/admin/products">
+                  <Sidebar.Item
+                    icon={HiShoppingBag}
+                    onClick={handleToggleSidebar}
+                    className={
+                      "/admin/products" === currentPage
+                        ? "bg-gray-100 dark:bg-gray-700"
+                        : ""
+                    }
+                  >
+                    Products
+                  </Sidebar.Item>
+                </Link>
                 <Sidebar.Item
                   href="/users/list"
                   icon={HiUsers}
@@ -106,7 +104,7 @@ const ExampleSidebar: FC = function () {
           </div>
         </div>
       </Sidebar>
-    </>
+    </div>
   );
 };
 
