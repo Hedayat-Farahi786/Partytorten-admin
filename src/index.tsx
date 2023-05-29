@@ -11,6 +11,9 @@ import SignInPage from "./pages/authentication/sign-in";
 import SignUpPage from "./pages/authentication/sign-up";
 import EcommerceProductsPage from "./pages/e-commerce/products";
 import UserListPage from "./pages/users/list";
+import { Provider } from "react-redux";
+import { store } from "./api/store";
+import Main from "./components/Main";
 
 const container = document.getElementById("root");
 
@@ -23,18 +26,9 @@ const root = createRoot(container);
 root.render(
   <StrictMode>
     <Flowbite theme={{ theme }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<DashboardPage />} index />
-          <Route path="/authentication/sign-in" element={<SignInPage />} />
-          <Route path="/authentication/sign-up" element={<SignUpPage />} />
-          <Route
-            path="/e-commerce/products"
-            element={<EcommerceProductsPage />}
-          />
-          <Route path="/users/list" element={<UserListPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <Main />
+      </Provider>
     </Flowbite>
   </StrictMode>
 );

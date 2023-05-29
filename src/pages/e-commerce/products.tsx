@@ -568,7 +568,7 @@ const ProductsTable: FC = function () {
     }
   };
 
-  const itemsPerPage = 5; 
+  const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -602,7 +602,7 @@ const ProductsTable: FC = function () {
                 <div>
                   <img
                     src={product.image}
-                    className="w-20 rounded"
+                    className="w-20 nd:h-20 object-cover rounded"
                     alt="Broken URL"
                   />
                 </div>

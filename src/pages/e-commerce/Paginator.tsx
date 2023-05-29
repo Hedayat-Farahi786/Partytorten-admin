@@ -114,9 +114,19 @@ const Pagination: React.FC<PaginationProps> = ({
       {/* <div className="text-sm">{renderRangeMessage()}</div> */}
       <div className="text-sm">
         Showing
-        <strong> {((currentPage - 1) * itemsPerPage + 1) + '-' + Math.min(((currentPage - 1) * itemsPerPage + 1) + itemsPerPage - 1, totalItems)} </strong>
-        of 
-        <strong> {totalItems} </strong> products</div>
+        <strong>
+          {" "}
+          {(currentPage - 1) * itemsPerPage +
+            1 +
+            "-" +
+            Math.min(
+              (currentPage - 1) * itemsPerPage + 1 + itemsPerPage - 1,
+              totalItems
+            )}{" "}
+        </strong>
+        of
+        <strong> {totalItems} </strong> products
+      </div>
       <div className="flex space-x-5 items-center">
         <Button
           color="primary"
