@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashboardPage from "../pages";
 import SignInPage from "../pages/authentication/sign-in";
@@ -11,8 +11,6 @@ import axios from "axios";
 import { Toaster } from "react-hot-toast";
 
 const Main: FC = function () {
-  const [loading, setLoading] = useState(true);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +31,6 @@ const Main: FC = function () {
       .then((response) => {
         dispatch(addProducts(response.data));
         dispatch(unload());
-        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);

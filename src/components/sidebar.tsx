@@ -3,9 +3,6 @@ import type { FC } from "react";
 import { useEffect, useState } from "react";
 import {
   HiChartPie,
-  HiClipboard,
-  HiCollection,
-  HiInformationCircle,
   HiLogin,
   HiPencil,
   HiSearch,

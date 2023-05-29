@@ -25,13 +25,6 @@ const Pagination: React.FC<PaginationProps> = ({
     }
   };
 
-  const renderRangeMessage = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage + 1;
-    const endIndex = Math.min(startIndex + itemsPerPage - 1, totalItems);
-
-    return `Showing ${startIndex} to ${endIndex} of ${totalItems} products`;
-  };
-
   const renderPaginationButtons = () => {
     const buttons = [];
 

@@ -1,8 +1,8 @@
 import type { FC } from "react";
-import { Button, DarkThemeToggle, Navbar } from "flowbite-react";
+import { DarkThemeToggle, Navbar } from "flowbite-react";
 import { useDispatch } from "react-redux";
 import { toggleShowSidebar } from "../api/features/account";
-import { FaBars, FaLine } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 
 const ExampleNavbar: FC = function () {
   const dispatch = useDispatch();

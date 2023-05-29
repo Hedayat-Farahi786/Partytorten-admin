@@ -2,36 +2,27 @@
 import {
   Breadcrumb,
   Button,
-  Checkbox,
   Label,
   Modal,
   Table,
-  Textarea,
   TextInput,
-  Toast,
 } from "flowbite-react";
 import { FC, useEffect } from "react";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import {
-  HiCog,
-  HiDotsVertical,
-  HiExclamationCircle,
   HiHome,
   HiOutlineExclamationCircle,
   HiPencilAlt,
   HiTrash,
-  HiUpload,
 } from "react-icons/hi";
 import NavbarSidebarLayout from "../../layouts/navbar-sidebar";
-import { Pagination } from "../users/list";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 import {
   addProduct,
-  addProducts,
   deleteProduct,
   updateProduct,
 } from "../../api/features/product";
@@ -142,7 +133,6 @@ const AddProductModal: FC = function () {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
     reset,
   } = useForm<AddProductFormData>();
 
@@ -153,10 +143,11 @@ const AddProductModal: FC = function () {
 
     axios
       .post("https://partytorten-backend.vercel.app/products", data)
-      .then((res: any) => {
+      .then(() => {
         dispatch(addProduct(data));
         setOpen(!isOpen);
         setLoading(false);
+        reset();
         toast.success("Product added Successfully!");
       })
       .catch((err: any) => {
@@ -320,7 +311,6 @@ const EditProductModal: FC<EditComponentProps> = function ({ product }) {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
     reset,
     setValue,
   } = useForm<AddProductFormData>({ defaultValues });
@@ -340,10 +330,11 @@ const EditProductModal: FC<EditComponentProps> = function ({ product }) {
         `https://partytorten-backend.vercel.app/products/${product._id}`,
         data
       )
-      .then((res: any) => {
+      .then(() => {
         dispatch(updateProduct({ id: product._id, data }));
         setOpen(!isOpen);
         setLoading(false);
+        reset();
         toast.success("Product updated Successfully!");
       })
       .catch((err: any) => {
@@ -560,7 +551,9 @@ const ProductsTable: FC = function () {
   const categories = useSelector((state: any) => state.products.categories);
 
   const handleCategoryLookup = (category: any) => {
-    const matchingCategory = categories.find((cat) => cat._id === category);
+    const matchingCategory = categories.find(
+      (cat: any) => cat._id === category
+    );
     if (matchingCategory) {
       return matchingCategory.name;
     } else {
